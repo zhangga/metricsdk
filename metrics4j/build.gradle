@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'com.dino.metrics4j'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+
+    implementation group: 'io.dropwizard.metrics', name: 'metrics-jvm', version: '4.2.6'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.0'
+}
+
+test {
+    useJUnitPlatform()
+}
