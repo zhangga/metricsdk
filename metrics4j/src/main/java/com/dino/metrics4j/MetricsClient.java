@@ -52,6 +52,11 @@ public class MetricsClient {
         send(metrics);
     }
 
+    protected static void emitTimerMetrics(String name, String tags, double time) {
+        if (getClient() == null)
+            return;
+    }
+
     private static void send(String metrics) {
         try {
             byte[] data = metrics.getBytes(StandardCharsets.UTF_8);

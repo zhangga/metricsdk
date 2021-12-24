@@ -17,8 +17,24 @@ public class MetricsUtils {
         MetricsClient.initClient(serverHost, serverPort);
     }
 
+    /**
+     * 累计计数型
+     * @param name
+     * @param tags
+     * @param count
+     */
     public static void emitCounterMetrics(String name, String tags, Object count) {
         MetricsClient.emitCounterMetrics(name, tags, count);
+    }
+
+    /**
+     *
+     * @param name
+     * @param tags
+     * @param time
+     */
+    public static void emitTimerMetrics(String name, String tags, double time) {
+        MetricsClient.emitTimerMetrics(name, tags, time);
     }
 
     public static String getTagKVs(Map<String, String> tags) {
