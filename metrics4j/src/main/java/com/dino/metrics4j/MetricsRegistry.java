@@ -14,7 +14,7 @@ public class MetricsRegistry {
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
         executor.scheduleAtFixedRate(()-> {
             for (Map.Entry<String, ValueMetric> entry : metrics.entrySet()) {
-                MetricsUtils.emitCounterMetrics(entry.getKey(), metricTags.get(entry.getKey()), entry.getValue().getValue());
+                MetricsUtils.emitStoreMetrics(entry.getKey(), metricTags.get(entry.getKey()), entry.getValue().getValue());
             }
         }, 100, 1000, TimeUnit.MILLISECONDS);
     }

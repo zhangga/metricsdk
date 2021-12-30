@@ -18,6 +18,16 @@ public class MetricsUtils {
     }
 
     /**
+     * 数值型
+     * @param name
+     * @param tags
+     * @param count
+     */
+    public static void emitStoreMetrics(String name, String tags, Object count) {
+        MetricsClient.emitStoreMetrics(name, tags, count);
+    }
+
+    /**
      * 累计计数型
      * @param name
      * @param tags
@@ -50,8 +60,9 @@ public class MetricsUtils {
         }
     }
 
-    public static String getMetricValue(String metricName, String tags, Object value) {
+    public static String getMetricValue(MetricType type, String metricName, String tags, Object value) {
         StringBuilder sb = new StringBuilder();
+        sb.append(type.getId()).append("$");
         sb.append(metricName).append("$");
         if (tags != null && !tags.isEmpty()) {
             sb.append(tags).append("$");

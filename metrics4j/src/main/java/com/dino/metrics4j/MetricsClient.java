@@ -45,10 +45,17 @@ public class MetricsClient {
         return client;
     }
 
+    protected static void emitStoreMetrics(String name, String tags, Object value) {
+        if (getClient() == null)
+            return;
+        String metrics = MetricsUtils.getMetricValue(MetricType.Store, name, tags, value);
+        send(metrics);
+    }
+
     protected static void emitCounterMetrics(String name, String tags, Object value) {
         if (getClient() == null)
             return;
-        String metrics = MetricsUtils.getMetricValue(name, tags, value);
+        String metrics = MetricsUtils.getMetricValue(MetricType.Counter, name, tags, value);
         send(metrics);
     }
 
